@@ -641,10 +641,10 @@ transition: all .2s ease-in-out;
 /* Delete buttons */
 .delete-btn {
   background: transparent;
-  text-shadow: -2px 0px 13px rgba(253,14,14,0.95);
-  position: relative
   border: none;
+  position: relative;
   padding: 5px 10px;
+  text-shadow: -2px 0px 13px rgba(253,14,14,0.95);
   border-radius: 50%;
   cursor: pointer;
   margin-left: auto;
