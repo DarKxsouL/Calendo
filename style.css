@@ -640,9 +640,9 @@ transition: all .2s ease-in-out;
 
 /* Delete buttons */
 .delete-btn {
-  background: rgba(0, 0, 0, 0.3);
-  position: relative;
-  /* color: rgb(255, 0, 0); */
+  background: transparent;
+  text-shadow: -2px 0px 13px rgba(253,14,14,0.95);
+  position: relative
   border: none;
   padding: 5px 10px;
   border-radius: 50%;
