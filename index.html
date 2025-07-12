@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login to Calendo</title>
+  <link rel="icon" type="image/png" href="timetable.png">
+  <link rel="stylesheet" href="login.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <div class="bgContain">
+  <div class="auth-container">
+    <div class="auth-box">
+      <div class="toggle-buttons">
+        <button id="loginBtn" class="active">Login</button>
+        <button id="signupBtn">Signup</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form-section">
+        <label>Email:
+          <input type="email" required placeholder="Enter your email" />
+        </label>
+        <label>Password:
+          <input type="password" required placeholder="Enter your password" />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="google-signin">
+  <button id="googleSignInBtn">Sign in with Google</button>
+</div>
+
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="form-section hidden">
+        <label>Full Name:
+          <input type="text" required placeholder="Enter your name" />
+        </label>
+        <label>Email:
+          <input type="email" required placeholder="Enter your email" />
+        </label>
+        <label>Password:
+          <input type="password" required placeholder="Create a password" />
+        </label>
+        <button type="submit">Signup</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="login.js"></script>
+<script src="firebaseconfig.js"></script>
+  <script src="firebase-auth.js"></script>
+</body>
+</html>

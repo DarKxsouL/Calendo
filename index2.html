@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendo</title>
+    <link rel="icon" type="image/png" href="timetable.png">
+    <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebaseconfig.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- side panel for reminders -->
+    <div class="mainContainer">
+      <!-- main calender -->
+      <div class="contianer">
+        <div class="side-panel left-panel">
+          <h2 style="color: black;">Reminders</h2>
+          <div class="reminders-container"></div>
+        </div>
+
+        <div class="calendar">
+          <div class="calendar-header">
+            <span class="month-picker" id="month-picker"> May </span>
+            <div class="year-picker" id="year-picker">
+              <span class="year-change" id="pre-year"><pre><</pre></span>
+              <span id="year">2023</span>
+              <span class="year-change" id="next-year"><pre>></pre></span>
+            </div>
+          </div>
+
+          <div class="calendar-body">
+            <div class="calendar-week-days">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            <div class="calendar-days"></div>
+          </div>
+
+          <div class="calendar-footer"></div>
+
+          <div class="date-time-formate">
+            <div class="day-text-formate">TODAY</div>
+            <div class="date-time-value">
+              <div class="time-formate">02:51:20</div>
+              <div class="date-formate">23 - July - 2022</div>
+            </div>
+          </div>
+
+          <!-- Form embedded inside calendar -->
+          <div class="event-reminder-form">
+            <div class="form-container">
+              <div class="form-toggle">
+                <button id="eventTab" class="active">Event</button>
+                <button id="reminderTab">Reminder</button>
+              </div>
+
+              <form id="eventForm" class="form-content">
+                <label
+                  >Date: <input type="date" name="eventDate" required
+                /></label>
+                <label
+                  >Title:
+                  <input
+                    type="text"
+                    name="eventTitle"
+                    placeholder="Enter event title"
+                    required
+                /></label>
+                <label
+                  >Type:
+                  <select name="eventType">
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Meeting</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+                <button type="submit">Add Event</button>
+              </form>
+
+              <form id="reminderForm" class="form-content hidden">
+                <label
+                  >Date: <input type="date" name="reminderDate" required
+                /></label>
+                <label
+                  >Reminder:
+                  <input
+                    type="text"
+                    name="reminderText"
+                    placeholder="What to be reminded of?"
+                    required
+                /></label>
+                <label
+                  >Importance:
+                  <select name="importanceLevel">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </select>
+                </label>
+                <label
+                  >Time: <input type="time" name="reminderTime" required
+                /></label>
+                <button type="submit">Add Reminder</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="month-list"></div>
+        </div>
+
+        <div class="side-panel right-panel">
+          <h2 style="color: whitesmoke;">Events</h2>
+          <div class="events-container"></div>
+        </div>
+      </div>
+        <div class="logout">
+          <button class="logoutBtn" id="logoutBtn">Log Out</button>
+        </div>
+        
+    </div>
+  </body>
+</html>

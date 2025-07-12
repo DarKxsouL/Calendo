@@ -1,0 +1,775 @@
+:root {
+  --dark-text: #f8fbff;
+  --light-body: #f3f8fe;
+  --light-main: #fdfdfd;
+  --light-second: #c3c2c8;
+  --light-hover: #f0f0f0;
+  --light-text: #151426;
+  --light-btn: #9796f0;
+  --blue: #0000ff;
+  --white: #fff;
+  --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --font-family: consolas;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: var(--font-family);
+  align-items: center;
+  background:linear-gradient(to right, #9796f0, #fbc7d4);
+}
+
+/* container for overall calender */
+.mainContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("cherry-blossom-path.jpg");
+  background-size: cover;
+  padding: 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  flex-direction: column;
+  
+}
+
+/* container for central calender */
+.mainContainer  .contianer {
+  width: max-content;
+  height: max-content;
+  position: relative;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
+  top: 0%;
+  border-radius: 25px;
+  height: 100%;
+}
+.calendar {
+  height: 680px;
+  width: 480px;
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(223, 224, 227, 0.581);
+  border: 1px solid rgba(0, 0, 0, 0.421);
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 10px 50px 0px 50px;
+  
+}
+.calendar {
+  box-shadow: var(--shadow);
+}
+.calendar-header {
+  background: #9796f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  color: var(--white);
+  padding: 10px;
+}
+.calendar-body {
+  pad: 10px;
+}
+.calendar-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  cursor: pointer;
+  color:rgb(104, 104, 104);
+}
+.calendar-week-days div:hover {
+color:black;
+transform: scale(1.2);
+transition: all .2s ease-in-out;
+}
+.calendar-week-days div {
+  display: grid;
+  place-items: center;
+  color: var(--bg-second);
+  height: 50px;
+}
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  color: var(--color-txt);
+  margin-bottom: 20px;
+}
+.calendar-days div {
+  width: 37px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  animation: to-top 1s forwards;
+}
+.month-picker {
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.month-picker:hover {
+  background-color: var(--color-hover);
+}
+.month-picker:hover {
+  color: var(--color-txt);
+}
+.year-picker {
+  display: flex;
+  align-items: center;
+}
+.year-change {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.year-change:hover {
+  background-color: var(--light-btn);
+  transition:all .2s ease-in-out ;
+  transform: scale(1.12);
+}
+.year-change:hover pre {
+  color: var(--bg-body);
+}
+.calendar-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#year:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2 ease-in-out;
+}
+.calendar-days div span {
+  position: absolute;
+}
+ .calendar-days div:hover {
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  background-color: #fbc7d4;
+  border-radius: 20%;
+  color: var(--dark-text);
+}
+.calendar-days div.current-date {
+  color: var(--dark-text);
+  background-color: var(--light-btn);
+  border-radius: 20%;
+}
+.month-list {
+  position: relative;
+  left: 0;
+  top: -250px;
+  background-color: #ebebeb;
+  color: var(--light-text);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px;
+  border-radius: 20px;
+}
+.month-list > div {
+  display: grid;
+  place-content: center;
+  margin: 5px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.month-list > div > div {
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+}
+.month-list > div > div:hover {
+  background-color:var(--light-btn);
+  color: var(--dark-text);
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+}
+.month-list.show {
+  visibility: visible;
+  pointer-events: visible;
+  transition: 0.6s ease-in-out;
+  animation: to-left .71s forwards;
+}
+.month-list.hideonce{
+  visibility: hidden;
+  
+}
+.month-list.hide {
+  animation: to-right 1s forwards;
+  visibility: none;
+  pointer-events: none;
+}
+.date-time-formate {
+  width: max-content;
+  height: max-content;
+  font-family: Dubai Light, Century Gothic;
+  position: relative;
+  display: inline;
+  top: 140px;
+  justify-content: center;
+}
+.day-text-formate {
+  font-family: Microsoft JhengHei UI;
+  font-size: 1.4rem;
+  padding-right: 5%;
+  border-right: 3px solid #9796f0;
+  position: absolute;
+  left: -1rem;
+}
+.date-time-formate:hover{
+  cursor: pointer;
+}
+.date-time-value {
+  display: block;
+  height: max-content;
+  width: max-content;
+  position: relative;
+  left: 40%;
+  top: -18px;
+  text-align: center;
+}
+.time-formate {
+  font-size: 1.5rem;
+}
+.time-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+.day-text-formate.hidetime {
+  animation: hidetime 1.5s forwards;
+}
+.date-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+.day-text-formate.showtime{
+  animation: showtime 1s forwards;
+}
+.time-formate.showtime {
+  animation: showtime 1s forwards;
+}
+.date-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+
+.disp-header{
+  width: 100%;
+  height: 10%;
+  left: 50px;
+  border-top-right-radius: 15%;
+  border-top-left-radius: 15%;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  border-style: groove;
+  background: transparent;
+}
+
+.disp-details{
+  background-color: transparent;
+  width: 100%;
+  height: 80%;
+  border-top-right-radius: 7%;
+  border-top-left-radius: 7%;
+  border-bottom-left-radius: 7%;
+  border-bottom-right-radius: 7%;
+}
+
+
+@keyframes to-top {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+@keyframes to-left {
+  0% {
+    transform: translatex(230%);
+    opacity: 1;
+  }
+  100% {
+    transform: translatex(0);
+    opacity: 1;
+  }
+}
+@keyframes to-right {
+  10% {
+    transform: translatex(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translatex(-150%);
+    opacity: 1;
+  }
+}
+@keyframes showtime {
+  0% {
+    transform: translatex(250%);
+    opacity: 1;
+  }
+  100% {
+    transform: translatex(0%);
+    opacity: 1;
+  }
+}
+@keyframes hidetime {
+  0% {
+    transform: translatex(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translatex(-370%);
+    opacity: 1;
+  }
+}
+@media (max-width:375px) {
+  .month-list>div{
+
+    margin: 5px 0px;
+  }
+}
+
+
+.calendar-day.selected-date {
+  background-color: #e063e7e3 !important;
+  color: white !important;
+  border-radius: 25%;
+  font-weight: bold;
+}
+
+.calendar-day.has-event {
+  background-color: red;
+  color: white;
+  border-radius: 25%;
+}
+
+.calendar-day.has-reminder {
+  background-color: orange;
+  color: black;
+  border-radius: 25%;
+}
+
+.calendar-day.has-event.has-reminder {
+  background: linear-gradient(135deg, red 50%, orange 50%);
+  color: white;
+  border-radius: 25%;
+}
+
+
+
+/* Calendar Form Section Styling */
+/* Additional styles for embedding form inside calendar with glassmorphism */
+.event-reminder-form {
+  margin-top: auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-height: 280px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  scrollbar-width: none; /* Firefox */
+  animation: showtime 1s forwards;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.event-reminder-form.showtime {
+  animation: showtime 1s forwards;
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.event-reminder-form.hideTime {
+  animation: hidetime 1.5s forwards;
+  transform: translateX(-370%);
+  opacity: 1;
+}
+
+.event-reminder-form::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.event-reminder-form .form-container {
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: var(--light-text);
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.form-toggle button {
+  background: var(--light-body);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.form-toggle .active {
+  background: #9c03cbc8;
+  color: var(--white);
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-content.hidden {
+  display: none;
+}
+
+.form-content label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--light-text);
+}
+
+.form-content input,
+.form-content select {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid var(--light-second);
+  font-size: 13px;
+  background: var(--light-main);
+  color: var(--light-text);
+}
+
+.form-content button {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 13px;
+}
+
+.form-content button:hover {
+  background-color: #b802f5aa;
+}
+
+/* Ensure form is separated visually from the date/time section */
+.date-time-formate {
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 2;
+  top: 20px;
+}
+
+@keyframes showtime {
+  0% {
+    transform: translateX(250%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes hidetime {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-370%);
+    opacity: 1;
+  }
+}
+
+
+/* Side Panel for reminders and events */
+.side-panel {
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: var(--shadow);
+  height: 680px;
+  width: 400px;
+  margin-right: 50px;
+  overflow-y: auto;
+  backdrop-filter: blur(3px) saturate(180%);
+  -webkit-backdrop-filter: blur(3px) saturate(180%);
+  background-color: rgba(139, 143, 151, 0.581);
+  border: 1px solid rgba(20, 67, 178, 0.421);
+}
+
+/*  */
+.left-panel {
+  margin-right: 20px;
+}
+
+.right-panel {
+  margin-left: 20px;
+}
+
+.side-panel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.side-panel h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #414085;
+  border-bottom: 2px solid #fbc7d4;
+  padding-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+}
+
+.reminder-item, .event-item {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.reminder-header, .event-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.reminder-type {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.reminder-type.low { background: #e0ffe0; }
+.reminder-type.medium { background: #fff9e0; }
+.reminder-type.high { background: #ffe0e0; }
+
+.event-type {
+  font-style: italic;
+  color: #9796f0;
+}
+
+.contianer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-items {
+  text-align: center;
+  color: #5206f6;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+.reminder-time {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #0846e1;
+}
+
+
+/* logout button */
+.logoutBtn{
+  position: fixed;
+  right: 13px;
+  top: 20px;
+  padding: 8px 15px;
+  background-color: #ffdcdccf;
+  color: #ec275f;
+  border: 1px solid rgba(255, 0, 195, 0.844);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: bold;
+}
+.logoutBtn:hover{
+  background-color: #f25477;
+  color: black;
+  text-shadow: rgb(255, 240, 247) 2px 2px 4px;
+}
+
+
+.ent-text-dlt{
+  display: flex;
+  width: 100%;
+}
+
+.rem-text-dlt{
+  display: flex;
+  width: 100%;
+}
+
+/* Delete buttons */
+.delete-btn {
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  /* color: rgb(255, 0, 0); */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+
+
+/* Event date display */
+.event-date {
+  font-size: 0.9em;
+  color: #6c63ff;
+}
+
+.reminder-item.high {
+  background-color: #ff3f3f3d; /* light red */
+}
+
+.reminder-item.medium {
+  background-color: #f6c83130; /* light yellow */
+}
+
+.reminder-item.low {
+  background-color: #44ff4432; /* light green */
+}
+
+
+.toast-message {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #2ecc71; /* default green */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10000;
+  opacity: 0.95;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.toast-message.error {
+  background: #e74c3c;
+}
+
+.toast-message.info {
+  background: #3498db;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 0.95; transform: translateY(0); }
+}
+
+
+.custom-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.custom-dialog {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeInScale 0.3s ease-out;
+}
+
+.custom-dialog .confirm-message {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.confirm-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #27ae60;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

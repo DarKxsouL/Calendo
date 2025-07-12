@@ -1,0 +1,194 @@
+:root {
+  --dark-text: #f8fbff;
+  --light-body: #f3f8fe;
+  --light-main: #fdfdfd;
+  --light-second: #c3c2c8;
+  --light-hover: #f0f0f0;
+  --light-text: #151426;
+  --light-btn: #9796f0;
+  --blue: #0000ff;
+  --white: #fff;
+  --font-family: consolas;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: linear-gradient(to right, #9796f0, #fbc7d4);
+  background-image: url("cherry-blossom-path.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgContain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 20px 10px rgba(255, 255, 255, 1);
+    
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+  
+}
+
+.auth-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 20px 30px;
+  border-radius: 20px;
+  width: 350px;
+  min-height: 400px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #9938d586;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-buttons .active {
+  background-color: #9c03cbca;
+  color: var(--white);
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.form-section label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--light-text);
+}
+
+.form-section input {
+  padding: 10px;
+  border: 1px solid var(--light-second);
+  border-radius: 6px;
+  font-size: 14px;
+  width: 280px;
+  background-color: var(--light-main);
+}
+
+.form-section button {
+  padding: 10px;
+  width: 100px;
+  background-color: #f946cfc5;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-section button:hover {
+  background-color: #b802f5aa;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.google-signin {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.google-signin button {
+  background-color: rgba(218, 32, 32, 0.829);
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.google-signin button:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+
+.toast-message {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #2ecc71; /* default green */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10000;
+  opacity: 0.95;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.toast-message.error {
+  background: #e74c3c;
+}
+
+.toast-message.info {
+  background: #3498db;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 0.95; transform: translateY(0); }
+}
